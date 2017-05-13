@@ -18,12 +18,12 @@ fi
 CUR_PATH=$(dirname $0)
 echo -n "Download blacklist from stopforumspam.com..."
 cd $CUR_PATH
-wget -qN http://www.stopforumspam.com/downloads/listed_ip_7.zip
-unzip -oq listed_ip_7.zip
+wget -qN http://www.stopforumspam.com/downloads/listed_ip_$1.zip
+unzip -oq listed_ip_$1.zip
 echo "Done"
 echo -n "Applying blacklist to IPSET..."
 ipset -q -N blacklist iphash
-xfile=$(cat $CUR_PATH/listed_ip_7.txt)
+xfile=$(cat $CUR_PATH/listed_ip_$1.txt)
 for ipaddr in $xfile
 do
 	ipset -exist -A blacklist $ipaddr
