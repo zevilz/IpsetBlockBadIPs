@@ -61,4 +61,4 @@ Example:
 Changelog
 ---------
 
-13.05.2017 - 1.0 - released
+13.05.2017 - 1.0.0 - released

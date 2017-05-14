@@ -2,6 +2,7 @@
 # Ipset Block Bad IPs
 # Author: zEvilz
 # License: MIT
+# Version: 1.0.0
 
 if [ ! $# -eq 1 ]
 then
