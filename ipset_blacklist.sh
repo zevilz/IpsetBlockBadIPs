@@ -1,5 +1,6 @@
 #!/bin/bash
 # Ipset Block Bad IPs
+# URL: https://github.com/zevilz/IpsetBlockBadIPs
 # Author: zEvilz
 # License: MIT
 # Version: 1.0.0
