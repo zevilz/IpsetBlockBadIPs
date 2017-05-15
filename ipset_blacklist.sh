@@ -3,7 +3,9 @@
 # URL: https://github.com/zevilz/IpsetBlockBadIPs
 # Author: zEvilz
 # License: MIT
-# Version: 1.0.0
+# Version: 1.0.1
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 if [ ! $# -eq 1 ]
 then
