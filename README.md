@@ -61,5 +61,5 @@ Example:
 Changelog
 ---------
 
-15.05.2017 - 1.0.1 - added PATH var for fix errors when run via crontab
-13.05.2017 - 1.0.0 - released
+- 15.05.2017 - 1.0.1 - added PATH var for fix errors when run via crontab
+- 13.05.2017 - 1.0.0 - released
