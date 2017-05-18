@@ -41,7 +41,7 @@ Note that there is a limits for day downloading (for the first - 24 daily downlo
 
 Add line in root crontab like below
 
-    0 0 * * * bash /path/to/script/ipset_blacklist/ipset_update.sh 7 # daily updates in 00:00 with including IPs list logged within the last 7 day
+    0 0 * * * bash /path/to/script/ipset_update.sh 7 # daily updates in 00:00 with including IPs list logged within the last 7 day
 
 If you want receive script result to email add below to the top of crontab list (require working MTA on your server)
 
