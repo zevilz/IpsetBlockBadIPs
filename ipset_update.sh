@@ -3,7 +3,7 @@
 # URL: https://github.com/zevilz/IpsetBlockBadIPs
 # Author: zEvilz
 # License: MIT
-# Version: 1.0.1
+# Version: 1.0.2
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
@@ -27,6 +27,7 @@ unzip -oq listed_ip_$1.zip
 echo "Done"
 echo -n "Applying blacklist to IPSET..."
 ipset -q -N blacklist iphash
+ipset -q -F blacklist
 xfile=$(cat $CUR_PATH/listed_ip_$1.txt)
 for ipaddr in $xfile
 do
