@@ -3,7 +3,7 @@
 # URL: https://github.com/zevilz/IpsetBlockBadIPs
 # Author: zEvilz
 # License: MIT
-# Version: 1.0.2
+# Version: 1.0.3
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
@@ -39,4 +39,4 @@ iptables -I INPUT -m set --match-set blacklist src -j REJECT
 iptables -I INPUT -m set --match-set blacklist src -j LOG --log-prefix "REJECT blacklist entry"
 echo "Done"
 echo -n "Num of blacklisted IPs..."
-ipset -L blacklist | grep -A999999999 'Members:' | wc -l
+ipset -L blacklist | grep -A999999999 'Members:' | tail -n +2 | wc -l
