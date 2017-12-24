@@ -39,4 +39,5 @@ iptables -I INPUT -m set --match-set blacklist src -j REJECT
 iptables -I INPUT -m set --match-set blacklist src -j LOG --log-prefix "REJECT blacklist entry"
 echo "Done"
 echo -n "Num of blacklisted IPs..."
+sleep 5
 ipset -L blacklist | grep -A999999999 'Members:' | tail -n +2 | wc -l
