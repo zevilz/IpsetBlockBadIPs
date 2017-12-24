@@ -61,6 +61,7 @@ Example:
 Changelog
 ---------
 
+- 24.12.2017 - 1.0.4 - fixed wrong number of members in set
 - 23.12.2017 - 1.0.3 - fixed wrong number of members in set
 - 11.06.2017 - 1.0.2 - added flush set before update blacklist
 - 15.05.2017 - 1.0.1 - added PATH var for fix errors when run via crontab
