@@ -1,4 +1,4 @@
-# IpsetBlockBadIPs
+# IpsetBlockBadIPs [![Version](https://img.shields.io/badge/version-v1.1.0-brightgreen.svg)](https://github.com/zevilz/zImageOptimizer/releases/tag/1.1.0)
 Automatic block bad IPs with lists from www.stopforumspam.com
 
 Requirements
@@ -37,6 +37,10 @@ Supported periods:
 
 Note that there is a limits for day downloading (for the first - 24 daily downloads, for the others - 2 daily downloads). Downloading skip if the local list archive same as in www.stopforumspam.com.
 
+### Whitelist
+
+You may create whitelist if you want automatically delete custom IPs from blacklist after it create. Put your IPs in `whitelist` file (one per row) in the same directory and run script. You will see appropriate message during script work.
+
 ### Cron
 
 Add line in root crontab like below
@@ -61,6 +65,7 @@ Example:
 Changelog
 ---------
 
+- 26.11.2018 - 1.1.0 - added whitelist support and added check for successful list download
 - 24.12.2017 - 1.0.4 - fixed wrong number of members in set
 - 23.12.2017 - 1.0.3 - fixed wrong number of members in set
 - 11.06.2017 - 1.0.2 - added flush set before update blacklist
