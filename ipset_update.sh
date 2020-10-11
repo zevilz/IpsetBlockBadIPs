@@ -55,10 +55,12 @@ else
 		echo "Done"
 	fi
 
-	echo -n "Applying blacklist to IPTABLES..."
-	iptables -I INPUT -m set --match-set blacklist src -j REJECT
-	iptables -I INPUT -m set --match-set blacklist src -j LOG --log-prefix "REJECT blacklist entry"
-	echo "Done"
+	if [[ -z $(iptables -L -n | grep 'match-set blacklist') ]]; then
+		echo -n "Applying blacklist to IPTABLES..."
+		iptables -I INPUT -m set --match-set blacklist src -j REJECT
+		iptables -I INPUT -m set --match-set blacklist src -j LOG --log-prefix "REJECT blacklist entry"
+		echo "Done"
+	fi
 
 	echo -n "Num of blacklisted IPs..."
 	sleep 5
