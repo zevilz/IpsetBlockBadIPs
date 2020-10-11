@@ -1,4 +1,4 @@
-# IpsetBlockBadIPs [![Version](https://img.shields.io/badge/version-v1.2.0-brightgreen.svg)](https://github.com/zevilz/zImageOptimizer/releases/tag/1.2.0)
+# IpsetBlockBadIPs [![Version](https://img.shields.io/badge/version-v1.2.0-brightgreen.svg)](https://github.com/zevilz/IpsetBlockBadIPs/releases/tag/1.2.0)
 Automatic block bad IPs with lists from www.stopforumspam.com
 
 Requirements
@@ -65,7 +65,7 @@ Example:
 Changelog
 ---------
 
-- 11.10.2020 - 1.2.0 - [bugfixes](https://github.com/zevilz/zImageOptimizer/releases/tag/1.2.0)
+- 11.10.2020 - 1.2.0 - [bugfixes](https://github.com/zevilz/IpsetBlockBadIPs/releases/tag/1.2.0)
 - 26.11.2018 - 1.1.0 - added whitelist support and added check for successful list download
 - 24.12.2017 - 1.0.4 - fixed wrong number of members in set
 - 23.12.2017 - 1.0.3 - fixed wrong number of members in set
