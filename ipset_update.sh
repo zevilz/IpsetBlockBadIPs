@@ -3,7 +3,7 @@
 # URL: https://github.com/zevilz/IpsetBlockBadIPs
 # Author: zEvilz
 # License: MIT
-# Version: 1.1.0
+# Version: 1.2.0
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
@@ -63,7 +63,12 @@ else
 	fi
 
 	echo -n "Num of blacklisted IPs..."
-	sleep 5
-	ipset -L blacklist | grep -A999999999 'Members:' | tail -n +2 | wc -l
+	IPS_COUNT=$(ipset -L blacklist | grep 'Number of entries' | awk '{print $NF}')
+	if ! [ -z "$IPS_COUNT" ]; then
+		echo "$IPS_COUNT"
+	else
+		sleep 5
+		ipset -L blacklist | grep -A999999999 'Members:' | tail -n +2 | wc -l
+	fi
 
 fi
