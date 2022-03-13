@@ -1,4 +1,4 @@
-# IpsetBlockBadIPs [![Version](https://img.shields.io/badge/version-v1.2.0-brightgreen.svg)](https://github.com/zevilz/IpsetBlockBadIPs/releases/tag/1.2.0)
+# IpsetBlockBadIPs [![Version](https://img.shields.io/badge/version-v1.3.0-brightgreen.svg)](https://github.com/zevilz/IpsetBlockBadIPs/releases/tag/1.3.0)
 Automatic block bad IPs with lists from www.stopforumspam.com
 
 Requirements
@@ -41,6 +41,10 @@ Note that there is a limits for day downloading (for the first - 24 daily downlo
 
 You may create whitelist if you want automatically delete custom IPs from blacklist after it create. Put your IPs in `whitelist` file (one per row) in the same directory and run script. You will see appropriate message during script work.
 
+### Custom blacklist
+
+You may create static blacklist if you want automatically add custom IPs to main blacklist after it create. Put your IPs in `blacklist` file (one per row) in the same directory and run script. You will see appropriate message during script work.
+
 ### Cron
 
 Add line in root crontab like below
@@ -65,6 +69,7 @@ Example:
 Changelog
 ---------
 
+- 13.03.2022 - 1.3.0 - added support for custom static blacklist for add to main blacklist
 - 11.10.2020 - 1.2.0 - [bugfixes](https://github.com/zevilz/IpsetBlockBadIPs/releases/tag/1.2.0)
 - 26.11.2018 - 1.1.0 - added whitelist support and added check for successful list download
 - 24.12.2017 - 1.0.4 - fixed wrong number of members in set
