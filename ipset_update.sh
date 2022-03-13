@@ -3,7 +3,7 @@
 # URL: https://github.com/zevilz/IpsetBlockBadIPs
 # Author: zEvilz
 # License: MIT
-# Version: 1.2.0
+# Version: 1.3.0
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
@@ -38,19 +38,29 @@ else
 	echo -n "Applying blacklist to IPSET..."
 	ipset -q -N blacklist iphash
 	ipset -q -F blacklist
-	xfile=$(cat $CUR_PATH/listed_ip_$1.txt)
-	for ipaddr in $xfile
+	BLACKLIST=$(cat $CUR_PATH/listed_ip_$1.txt)
+	for IP in $BLACKLIST
 	do
-		ipset -exist -A blacklist $ipaddr
+		ipset -exist -A blacklist $IP
 	done
 	echo "Done"
 
-	if [ -f whitelist ]; then
-		echo -n "Remove whitelisted IPs from blacklist..."
-		wxfile=$(cat $CUR_PATH/whitelist)
-		for ipaddr in $wxfile
+	if [ -f blacklist ]; then
+		echo -n "Add IPs from custom blacklist to IPSET blacklist..."
+		CUSTOM_BLACKLIST=$(cat $CUR_PATH/blacklist)
+		for IP in $CUSTOM_BLACKLIST
 		do
-			ipset del blacklist $ipaddr > /dev/null 2>/dev/null
+			ipset del blacklist $IP > /dev/null 2>/dev/null
+		done
+		echo "Done"
+	fi
+
+	if [ -f whitelist ]; then
+		echo -n "Remove whitelisted IPs from IPSET blacklist..."
+		WHITELIST=$(cat $CUR_PATH/whitelist)
+		for IP in $WHITELIST
+		do
+			ipset del blacklist $IP > /dev/null 2>/dev/null
 		done
 		echo "Done"
 	fi
