@@ -50,7 +50,7 @@ else
 		CUSTOM_BLACKLIST=$(cat $CUR_PATH/blacklist)
 		for IP in $CUSTOM_BLACKLIST
 		do
-			ipset del blacklist $IP > /dev/null 2>/dev/null
+			ipset -exist -A blacklist $IP
 		done
 		echo "Done"
 	fi
