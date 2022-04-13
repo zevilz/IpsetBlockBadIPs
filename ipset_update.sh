@@ -7,19 +7,24 @@
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
-if [ ! $# -eq 1 ]; then
+if [ $# -eq 0 ]; then
 	echo "Period not set!"
 	echo "Usage: bash $0 1|7|30|90|180|365"
 	exit 1
 fi
 
-if [[ $1 != 1 && $1 != 7 && $1 != 30 && $1 != 90 && $1 != 180 && $1 != 365 ]]; then
+if [[ "$1" != 1 && "$1" != 7 && "$1" != 30 && "$1" != 90 && "$1" != 180 && "$1" != 365 ]]; then
 	echo "Wrong period set!"
 	echo "Period must be set to 1 or 7 or 30 or 90 or 180 or 365"
 	exit 1
 fi
 
+LOGGING=0
 CUR_PATH=$(dirname $0)
+
+if [[ "$2" == 1 ]]; then
+	LOGGING=1
+fi
 
 echo -n "Download blacklist from stopforumspam.com..."
 cd $CUR_PATH
@@ -65,7 +70,17 @@ else
 	if [[ -z $(iptables -L -n | grep 'match-set blacklist') ]]; then
 		echo -n "Applying blacklist to IPTABLES..."
 		iptables -I INPUT -m set --match-set blacklist src -j REJECT
-		iptables -I INPUT -m set --match-set blacklist src -j LOG --log-prefix "REJECT blacklist entry"
+		if [ $LOGGING -eq 1 ]; then
+			echo -n "Enabling logging..."
+			iptables -I INPUT -m set --match-set blacklist src -j LOG --log-prefix "REJECT blacklist entry"
+			echo "Done"
+		fi
+		echo "Done"
+	fi
+
+	if [ $LOGGING -eq 0 ] && ! [[ -z $(iptables -L -n | grep 'REJECT blacklist entry') ]]; then
+		echo -n "Disabling logging..."
+		iptables -D INPUT -m set --match-set blacklist src -j LOG --log-prefix "REJECT blacklist entry"
 		echo "Done"
 	fi
 
