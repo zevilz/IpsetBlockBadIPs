@@ -70,11 +70,12 @@ else
 	if [[ -z $(iptables -L -n | grep 'match-set blacklist') ]]; then
 		echo -n "Applying blacklist to IPTABLES..."
 		iptables -I INPUT -m set --match-set blacklist src -j REJECT
-		if [ $LOGGING -eq 1 ]; then
-			echo -n "Enabling logging..."
-			iptables -I INPUT -m set --match-set blacklist src -j LOG --log-prefix "REJECT blacklist entry"
-			echo "Done"
-		fi
+		echo "Done"
+	fi
+
+	if [ $LOGGING -eq 1 ] && [[ -z $(iptables -L -n | grep 'REJECT blacklist entry') ]]; then
+		echo -n "Enabling logging..."
+		iptables -I INPUT -m set --match-set blacklist src -j LOG --log-prefix "REJECT blacklist entry"
 		echo "Done"
 	fi
 
