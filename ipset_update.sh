@@ -7,18 +7,18 @@
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
-if [ ! $# -eq 1 ]
-then
+if [ ! $# -eq 1 ]; then
 	echo "Period not set!"
 	echo "Usage: bash $0 1|7|30|90|180|365"
 	exit 1
 fi
-if [[ $1 != 1 && $1 != 7 && $1 != 30 && $1 != 90 && $1 != 180 && $1 != 365 ]]
-then
+
+if [[ $1 != 1 && $1 != 7 && $1 != 30 && $1 != 90 && $1 != 180 && $1 != 365 ]]; then
 	echo "Wrong period set!"
 	echo "Period must be set to 1 or 7 or 30 or 90 or 180 or 365"
 	exit 1
 fi
+
 CUR_PATH=$(dirname $0)
 
 echo -n "Download blacklist from stopforumspam.com..."
@@ -26,12 +26,9 @@ cd $CUR_PATH
 wget -qN http://www.stopforumspam.com/downloads/listed_ip_$1.zip
 
 if ! [ -f listed_ip_$1.zip ]; then
-
 	echo "Can't download!"
 	exit 1
-
 else
-
 	unzip -oq listed_ip_$1.zip
 	echo "Done"
 
@@ -80,5 +77,4 @@ else
 		sleep 5
 		ipset -L blacklist | grep -A999999999 'Members:' | tail -n +2 | wc -l
 	fi
-
 fi
