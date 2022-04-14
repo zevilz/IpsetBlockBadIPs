@@ -70,7 +70,7 @@ Logging is disabled by default to prevent increased load on the server at a larg
 bash ipset_update.sh 7 1
 ```
 
-Logging is done in the kernel log (by default, /var/log/kern.log on deb-based OS, /var/log/messages on rpm-based OS).
+Logging is done in the kernel log (by default, `/var/log/kern.log` on deb-based OS, `/var/log/messages` on rpm-based OS).
 
 Type for check logging:
 
